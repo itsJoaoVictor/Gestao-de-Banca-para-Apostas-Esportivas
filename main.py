@@ -1,6 +1,6 @@
 from time import sleep
 from bet import Bet
-from helper import Arquivo, Informacoes, Listar, Graficos
+from helper import Arquivo, Informacoes, Listar, Graficos, Banca
 
 def main () -> None:
     menu()
@@ -20,7 +20,8 @@ def menu () -> None:
     print('9 - Detalhamento por campeonato')
     print('10 - Detalhamento por mercado')
     print('11 Exibir Gráficos')
-    print('12 - Sair')
+    print('12 - Exibir informações da banca')
+    print('13 - Sair')
     
     opcao = int(input('\nDigite a opção desejada: '))
     
@@ -262,6 +263,11 @@ def menu () -> None:
             menu()
     
     elif opcao == 12:
+        banca = Banca(Arquivo('gestao_banca.csv').leitura())
+        banca.info_banca()
+        menu()
+        
+    elif opcao == 13:
         print('\n')
         print('Fechando programa...')
         sleep(2)

@@ -6,9 +6,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-banca_inicial = 70
-
-
 #Classe para conversao de datas
 class Conversor_Date:
     def str_para_date(self, data: str) -> date:
@@ -551,3 +548,52 @@ class Graficos(object):
         plt.show()
     
     
+#classe para controle da banca
+
+class Banca(object):
+    #construtor
+    def __init__(self, dataframe:pd.DataFrame):
+        self.dataframe = dataframe 
+        
+    def banca_inical(self:object) -> float:
+        #retornar o valor inicial da banca
+        banca_inical = 70
+        return banca_inical
+
+    def lucro_total(self:object) -> float:
+        #calcular o lucro total da banca
+        lucro_total = self.dataframe.sum()['Lucro']
+        return lucro_total
+    
+    def banca_total(self:object) -> float:
+        #calcular o valor total da banca
+        banca_atual = self.banca_inical() + self.lucro_total()
+        return banca_atual
+    
+    def sugestao_stakes(self:object) -> float:
+        #calcular a sugestão de stakes
+        if self.banca_total() < 100:
+            big = 2
+            mid = 1.5
+            small = 1
+            return big, mid, small
+
+        elif self.banca_total() >= 100:
+            big = self.banca_total()*(2/100)
+            mid = self.banca_total()*(1.5/100)
+            small = self.banca_total()*(1/100)
+            return big, mid, small
+    
+    def alterar_banca(self:object, valor:float) -> None:
+        #alterar o valor da banca
+        self.banca_inical = valor
+    
+    def info_banca(self:object) -> None:
+        #exibir informações da banca
+        print(f'Banca inicial: R${self.banca_inical()}')
+        print(f'Lucro total: R${self.lucro_total():.2f}')
+        print(f'Banca total: R${self.banca_total():.2f}')
+        print(f'Sugestão de stakes: Big: R${self.sugestao_stakes()[0]:.2f}, Mid: R${self.sugestao_stakes()[1]:.2f}, Small: R${self.sugestao_stakes()[2]:.2f}')
+        
+
+

@@ -27,9 +27,8 @@ O projeto de Gestão de Banca é uma aplicação desenvolvida para auxiliar no c
 1. Certifique-se de ter o Python 3.x e o pip instalados em seu sistema.
 2. Clone este repositório em sua máquina local.
 3. Navegue até o diretório raiz do projeto.
-4. Instale as dependências necessárias executando o comando `pip install -r requirements.txt`.
+4. Instale as dependências necessárias executando o comando `pip install nome_da_biblioteca`
 5. Execute o arquivo `main.py` para iniciar a aplicação.
-6. Acesse a aplicação no navegador usando o endereço `http://localhost:8000`.
 
 ## Contribuição
 
